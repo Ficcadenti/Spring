@@ -1,0 +1,10 @@
+FROM openjdk:22-jdk
+MAINTAINER Raffo
+LABEL maintainer="Raffo"
+RUN mkdir /opt/config
+ARG fileType
+COPY target/*.$fileType /opt/config/
+WORKDIR  /opt/config/
+
+ENV fileType ${fileType}
+CMD java -Xms${javaMinMemory:-256}m -Xmx${javaMaxMemory:-256}m -Xss${javaStackSize:-40}m -jar /opt/config/*.${fileType}

@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+
+  raffo-test:
+    image: raffo/test-docker:latest
+    container_name: raffo-test
+    env_file: "common-be.env"
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
